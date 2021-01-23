@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>	<%- include('./partials/head.ejs') %> 
+	<link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+	<%- include('./partials/header.ejs')  %> 
+	<!-- Banner -->
+	<%- include('partials/banner.ejs') %>
+	<!-- /Banner -->
+
+	
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Detalle del producto: <%= product.name %> </h2>
+			</div>
+			<div class="col-12">
+				<section class="product-box-row">
+					<section class="col-12 col-lg-0 image-and-description">
+							<img src="/images/products/<%- product.image %> " alt="imagen de producto">
+						
+						<p class="description">
+							<%= product.description %> 
+						</p></section>
+							<article class="col-12 col-lg-4 detail">
+								<h2> <%= product.name %> </h2>
+								<% if (product.discount > 0) { %>
+								 
+							
+							<span class="prev-price">
+								<%= toThousand(product.price) %> 
+							</span>
+							<span class="discount">
+							/	<%= product.discount %>%OFF 
+							</span>
+							<% } %>
+								<h3>$<%= toThousand(product.price - Math.round(product.price / 100 * product.discount)) %></h3>
+							<div class="message-container">
+								<div class="tarjeta"><i class="fas fa-credit-card"></i>
+								<p>Paga en 12 cuotas sin interes.</p>
+							</div>
+							<div class="tarjeta"><i class="fas fa-store"></i>
+							<p>Retiro gratis en locales del vendedor</p>
+						</div>
+							</div>
+							<button>
+								COMPRAR AHORA
+							</button>
+						</article>
+					</a>
+				</section>
+			
+			
+			</div>
+			
+		</div>
+	</div>
+	
+
+	<%- include('partials/footer.ejs') %>
+
+	<%- include('partials/scripts') %>
+</body>
+</html>
